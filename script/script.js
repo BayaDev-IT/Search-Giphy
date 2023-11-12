@@ -21,21 +21,29 @@ const renderGiphys = (data) => {
         data.map(el => {
             // console.log(el)
             const card = document.createElement('div')
+            card.classList.add('card')
             const title = document.createElement('h2')
             const giff = document.createElement('iframe')
-            // const downloadLink = document.createElement('a')
-            // downloadLink.href ='#'
-            // downloadLink.classList.add('download-btn')
-            // const img = document.createElement('img')
-            // img.src = '../images/download.svg'
+            const downloadLink = document.createElement('a')
+            downloadLink.href ='#'
+            downloadLink.classList.add('download-btn')
+            const img = document.createElement('img')
+            img.src = '../images/download.svg'
+            img.alt = 'download-icon'
+
+            img.onload = () => {
+                downloadLink.setAttribute("href", giff)
+                downloadLink.setAttribute("download", `${new Date().getTime()}.jpg`)
+
+            }
 
             title.textContent = el.title.length > 15 ? el.title.slice(0, 15) + '...' : el.title
             title.title = el.title
             giff.src = el.embed_url
 
 
-            // downloadLink.append(img)
-            card.append(giff, title)
+            downloadLink.append(img)
+            card.append(giff, title, downloadLink)
             output.append(card)
         })
         :

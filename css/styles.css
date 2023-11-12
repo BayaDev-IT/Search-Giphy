@@ -144,6 +144,27 @@ div h2 {
     color:rgb(113, 189, 255)
 }
 
-/* .download-btn {
-    color: white;
-} */
+.card {
+    position: relative;
+}
+.download-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #fff;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.card:hover .download-btn {
+    display: flex;
+}
+
+.download-btn img{
+    width: 14px;
+    height: 14px;
+}
